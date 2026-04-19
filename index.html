@@ -43,9 +43,77 @@
     opacity: 0.5;
   }
 
+  /* ── FLYER TOP BAR ── */
+  .flyer-bar {
+    width: 100%;
+    background: #06060f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 28px 5vw;
+    position: relative;
+    z-index: 10;
+    border-bottom: 3px solid var(--yellow);
+  }
+  .flyer-frame {
+    position: relative;
+    width: 100%;
+    max-width: 860px;
+    border: 3px solid var(--yellow);
+    box-shadow: 0 0 0 1px rgba(245,200,0,0.2), 0 24px 60px rgba(0,0,0,0.6);
+    background: #0a0a30;
+    overflow: hidden;
+  }
+  .flyer-frame::before {
+    content: 'OFFICIAL FLYER';
+    position: absolute;
+    top: 14px; left: 14px;
+    background: var(--yellow);
+    color: var(--text-dark);
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    padding: 5px 12px;
+    z-index: 2;
+  }
+  .flyer-frame img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    object-position: top;
+  }
+  /* Placeholder shown when flyer image not yet linked */
+  .flyer-placeholder {
+    width: 100%;
+    aspect-ratio: 16/9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0d0d80 0%, #1a1aff 100%);
+    gap: 16px;
+    color: rgba(255,255,255,0.5);
+  }
+  .flyer-placeholder-icon { font-size: 48px; }
+  .flyer-placeholder-text {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.8;
+  }
+  .flyer-placeholder-text strong {
+    display: block;
+    color: var(--yellow);
+    font-size: 15px;
+  }
+
   /* ── HERO ── */
   .hero {
-    min-height: 100vh;
+    min-height: 90vh;
     background: radial-gradient(ellipse 80% 60% at 70% 50%, #3535ff 0%, #1010cc 40%, #0a0a99 100%);
     position: relative;
     overflow: hidden;
@@ -753,6 +821,24 @@
 </head>
 <body>
 
+<!-- ══════ LANDSCAPE FLYER BAR ══════ -->
+<div class="flyer-bar">
+  <div class="flyer-frame">
+    <!-- ▶ REPLACE src below with your landscape flyer filename e.g. src="ESTY_courses.png" -->
+    <img src="ESTY_courses.png" alt="Esty Edu 2.0 — Official Flyer"
+      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <!-- Fallback shown if image path is not yet set -->
+    <div class="flyer-placeholder" style="display:none;">
+      <div class="flyer-placeholder-icon">🖼️</div>
+      <div class="flyer-placeholder-text">
+        <strong>Landscape Flyer Goes Here</strong>
+        Set src="your-flyer.png" in the code<br>
+        Recommended: 1600 × 900 px
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ══════ HERO ══════ -->
 <section class="hero">
   <div class="blob blob-1"></div>
@@ -786,7 +872,18 @@
 
     <div class="host-card">
       <div class="host-img-wrap">
-        <img src="/mnt/user-data/uploads/Sally.jpeg" alt="Esther Enefola">
+        <!-- ▶ REPLACE src below with your photo filename e.g. src="Sally.jpeg" -->
+        <img src="Sally.jpeg" alt="Esther Enefola"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <!-- Fallback shown if image path is not yet set -->
+        <div class="host-photo-fallback" style="display:none; flex-direction:column; align-items:center; justify-content:center; min-height:420px; background:linear-gradient(160deg,#1010cc,#0a0a70); gap:14px;">
+          <div style="width:90px;height:90px;border-radius:50%;background:rgba(245,200,0,0.15);border:3px solid var(--yellow);display:flex;align-items:center;justify-content:center;font-size:36px;">👤</div>
+          <div style="font-family:'Syne',sans-serif;font-size:12px;letter-spacing:2px;color:rgba(255,255,255,0.45);text-transform:uppercase;text-align:center;line-height:1.8;">
+            <span style="color:var(--yellow);display:block;font-size:14px;font-weight:700;">Esther Enefola</span>
+            Place your photo here<br>
+            <span style="font-size:10px;opacity:0.6;">Set src="your-photo.jpg" in the code</span>
+          </div>
+        </div>
         <div class="host-tag">Your Host</div>
         <div class="host-overlay">
           <div class="host-name">Esther Enefola</div>
